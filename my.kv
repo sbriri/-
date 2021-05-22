@@ -6,8 +6,8 @@
         name: "home"
     TktScreen:
         name: "ticket"
-    TenTktScreen:
-        name: "10_tickets"
+    printTkt:
+        name: "printTkt"
 
 
 <LotteryScreen>
@@ -22,12 +22,10 @@
             Button:
                 text:"开始游戏"
                 on_release: root.manager.current = "ticket"
-  
+            Button:
+                text:"彩票号码生成"
+                on_release: root.manager.current = "printTkt"
 
-            # Button:
-            #     text:"买十张！"
-            #     on_release: root.manager.current = "10_tickets"
-    
 
 <TktScreen>
 
@@ -48,5 +46,24 @@
                 on_release: root.manager.current = "home"
                 on_release: root.cleanData()
 
+<printTkt>
 
-<TenTktScreen>
+    Screen:
+        GridLayout:
+            cols:1
+            Label:
+                id:OneLabel
+                text:root.tktScreen_instance
+            Button:
+                text: "生一张"
+                on_release: root.printReslut(1)
+            Button:
+                text: "生十张！"
+                on_release: root.printReslut(10)
+            Button:
+                text:"返回主菜单"
+                on_release: root.manager.current = "home"
+                on_release: root.cleanData()
+
+
+

@@ -75,9 +75,25 @@ class TktScreen(Screen):
 
 
 
-class TenTktScreen(Screen):
-    # 可能也许会用这个干点别的
-    pass
+class printTkt(Screen):
+    
+    tktScreen_instance = StringProperty()
+
+    def __init__(self, **kwargs):
+        super(printTkt, self).__init__(**kwargs)
+        self.tktScreen_instance = "请选择生成方式"
+    
+    def printReslut(self, num):
+    
+        tkts = control.genN(num,False,0,False,[0])
+        result = ""
+        for tkt in tkts:
+            result += str(tkt) + '\n'
+
+        self.tktScreen_instance = result
+
+    def cleanData(self):
+        self.tktScreen_instance = "请选择生成方式"
 
 
 class MyApp(App):

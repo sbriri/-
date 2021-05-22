@@ -129,8 +129,6 @@ class control:
 
 
 
-
-
 if __name__ == '__main__':
     lot = control.gen1(False,0,False,[0])
         
