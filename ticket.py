@@ -50,12 +50,11 @@ class lottery:
 
 
     def match(pool, player, n) -> bool:
-        global lucky
-        lucky = False
+        lottery.lucky = False
         # check if lucky match
         if pool[6] == player[6]:
             n -= 1
-            lucky = True
+            lottery.lucky = True
         # check if normal numbers match
         for num in player[:6]:
             if num in pool[:6]:
@@ -71,7 +70,7 @@ class lottery:
             lottery.first += 1
             lottery.printStatus()
         elif lottery.match(pool, player, 6):
-            if lucky is True:
+            if lottery.lucky is True:
                 lottery.third += 1
                 lottery.printStatus()
             else:
@@ -83,22 +82,23 @@ class lottery:
         elif lottery.match(pool, player, 4):
             lottery.fifth += 1
         elif lottery.match(pool, player, 3):
-            if lucky is True:
+            if lottery.lucky is True:
                 lottery.sixth += 1
             else:
                 lottery.welfare += 1
         elif lottery.match(pool, player, 2):
-            if lucky is True:
+            if lottery.lucky is True:
                 lottery.sixth += 1
             else:
                 lottery.welfare += 1
         elif lottery.match(pool, player, 1):
-            if lucky is True:
+            if lottery.lucky is True:
                 lottery.sixth += 1
             else:
                 lottery.welfare += 1
         else:
             lottery.welfare += 1
+
 
 
 class control:

@@ -19,6 +19,8 @@ from ticket import ticket
 from ticket import control
 from ticket import lottery
 
+from kivy.core.window import Window
+Window.size = (1080  , 1920)
 class ScreenManager(ScreenManager):
     pass
 
@@ -26,20 +28,21 @@ class ScreenManager(ScreenManager):
 class LotteryScreen(GridLayout, Screen):
     pass
 
-class OneTktScreen(Screen):
+class TktScreen(Screen):
 
     oneTktScreen_instance = StringProperty()
 
     def __init__(self, **kwargs):
-        super(OneTktScreen, self).__init__(**kwargs)
-        self.oneTktScreen_instance = "暂无数据"
+        super(TktScreen, self).__init__(**kwargs)
+        self.oneTktScreen_instance = "请选择购买方式"
     
-    def printReslut(self):
+    def printReslut(self, num):
     
         lot = control.gen1(False,0,False,[0])
         
-        tkt = control.gen1(False,0,False,[0])
-        lottery.win(lot,tkt)
+        tkts = control.genN(num,False,0,False,[0])
+        for tkt in tkts:
+            lottery.win(lot,tkt)
 
 
         result = ("一等奖 " + str(lottery.first) + '\n' +
@@ -52,43 +55,29 @@ class OneTktScreen(Screen):
                  "购买总数 " + str(lottery.count) + '\n' +
                  "===========================" + '\n' +
                  "一共赚了  " + str(lottery.first * 5000000 + lottery.second * 2500000 + lottery.third * 3000 + lottery.forth * 200 + lottery.fifth * 10 + lottery.sixth * 5) + "￥" + '\n' +
-                 "一共花了 " + str(lottery.count * 2) )
+                 "一共花了 " + str(lottery.count * 2) + "￥")
 
 
         self.oneTktScreen_instance = result
 
+        
+    def cleanData(self):
+        lottery.first = 0
+        lottery.second = 0
+        lottery.third = 0
+        lottery.forth = 0
+        lottery.fifth = 0
+        lottery.sixth = 0
+        lottery.welfare = 0
+        lottery.count = 0
+        lottery.lucky = False
+        self.oneTktScreen_instance = "请选择购买方式"
+
 
 
 class TenTktScreen(Screen):
-
-    tenTktScreen_instance = StringProperty()
-
-    def __init__(self, **kwargs):
-        super(TenTktScreen, self).__init__(**kwargs)
-        self.tenTktScreen_instance = "暂无数据"
-
-    def printResult(self):
-
-        lot = control.gen1(False,0,False,[0])
-        
-        tkts = control.genN(10,False,0,False,[0])
-
-        for tkt in tkts:
-            lottery.win(lot,tkt)
-
-        result = ("一等奖 " + str(lottery.first) + '\n' +
-                 "二等奖 " + str(lottery.second) + '\n' +
-                 "三等奖 " + str(lottery.third) + '\n' +
-                 "四等奖 " + str(lottery.forth) + '\n' +
-                 "五等奖 " + str(lottery.fifth) + '\n' +
-                 "六等奖 " + str(lottery.sixth) + '\n' + 
-                 "慈善 " + str(lottery.welfare) + '\n' +
-                 "购买总数 " + str(lottery.count) + '\n' +
-                 "===========================" + '\n' +
-                 "一共赚了  " + str(lottery.first * 5000000 + lottery.second * 2500000 + lottery.third * 3000 + lottery.forth * 200 + lottery.fifth * 10 + lottery.sixth * 5) + "￥" + '\n' +
-                 "一共花了 " + str(lottery.count * 2) )
-
-        self.tenTktScreen_instance = result
+    # 可能也许会用这个干点别的
+    pass
 
 
 class MyApp(App):
