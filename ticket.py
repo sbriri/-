@@ -68,17 +68,13 @@ class lottery:
         lottery.count += 1
         if lottery.match(pool, player, 7):
             lottery.first += 1
-            lottery.printStatus()
         elif lottery.match(pool, player, 6):
             if lottery.lucky is True:
                 lottery.third += 1
-                lottery.printStatus()
             else:
                 lottery.second += 1
-                lottery.printStatus()
         elif lottery.match(pool, player, 5):
             lottery.forth += 1
-            lottery.printStatus()
         elif lottery.match(pool, player, 4):
             lottery.fifth += 1
         elif lottery.match(pool, player, 3):

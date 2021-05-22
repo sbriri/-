@@ -27,6 +27,7 @@
                 on_release: root.manager.current = "printTkt"
 
 
+
 <TktScreen>
 
     Screen:
@@ -35,16 +36,27 @@
             Label:
                 id:OneLabel
                 text:root.oneTktScreen_instance
-            Button:
-                text: "买一张"
-                on_release: root.printReslut(1)
-            Button:
-                text: "买十张！"
-                on_release: root.printReslut(10)
-            Button:
-                text:"返回主菜单"
-                on_release: root.manager.current = "home"
-                on_release: root.cleanData()
+            GridLayout:
+                cols:1
+                Button:
+                    text: "买一张"
+                    on_release: root.printReslut(1)
+                Button:
+                    text: "买十张！"
+                    on_release: root.printReslut(10)
+                GridLayout:
+                    cols:2
+                    Button:
+                        text:"买！"
+                        on_release: root.printReslut(input.text)
+                    TextInput:
+                        id:input
+                        hint_text:"自定义购买数"
+
+                Button:
+                    text:"返回主菜单"
+                    on_release: root.manager.current = "home"
+                    on_release: root.cleanData()
 
 <printTkt>
 
@@ -54,16 +66,18 @@
             Label:
                 id:OneLabel
                 text:root.tktScreen_instance
-            Button:
-                text: "生一张"
-                on_release: root.printReslut(1)
-            Button:
-                text: "生十张！"
-                on_release: root.printReslut(10)
-            Button:
-                text:"返回主菜单"
-                on_release: root.manager.current = "home"
-                on_release: root.cleanData()
+            GridLayout:
+                cols:1
+                Button:
+                    text: "生一张"
+                    on_release: root.printReslut(1)
+                Button:
+                    text: "生十张！"
+                    on_release: root.printReslut(10)
+                Button:
+                    text:"返回主菜单"
+                    on_release: root.manager.current = "home"
+                    on_release: root.cleanData()
 
 
 

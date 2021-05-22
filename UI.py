@@ -20,7 +20,7 @@ from ticket import control
 from ticket import lottery
 
 from kivy.core.window import Window
-Window.size = (1080  , 1920)
+# Window.size = (1080  , 1920)
 class ScreenManager(ScreenManager):
     pass
 
@@ -40,7 +40,7 @@ class TktScreen(Screen):
     
         lot = control.gen1(False,0,False,[0])
         
-        tkts = control.genN(num,False,0,False,[0])
+        tkts = control.genN(int(num),False,0,False,[0])
         for tkt in tkts:
             lottery.win(lot,tkt)
 
@@ -59,6 +59,8 @@ class TktScreen(Screen):
 
 
         self.oneTktScreen_instance = result
+
+    
 
         
     def cleanData(self):
