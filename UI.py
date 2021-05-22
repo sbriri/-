@@ -1,10 +1,6 @@
 # !/usr/bin/python
 # -*-coding:utf-8-*-
 
-# from kivy.config import Config
- 
-
-
 from kivy.core.text import LabelBase
 LabelBase.register('Roboto', './fonts/WeiRuanYaHei-1.ttf')
 
@@ -36,7 +32,7 @@ class OneTktScreen(Screen):
 
     def __init__(self, **kwargs):
         super(OneTktScreen, self).__init__(**kwargs)
-        self.oneTktScreen_instance = "haven't update yet"
+        self.oneTktScreen_instance = "暂无数据"
     
     def printReslut(self):
     
@@ -46,16 +42,17 @@ class OneTktScreen(Screen):
         lottery.win(lot,tkt)
 
 
-        result = ("first " + str(lottery.first) + '\n' +
-                 "second " + str(lottery.second) + '\n' +
-                 "third " + str(lottery.third) + '\n' +
-                 "forth " + str(lottery.forth) + '\n' +
-                 "sixth " + str(lottery.sixth) + '\n' + 
-                 "welfare " + str(lottery.welfare) + '\n' +
-                 "count " + str(lottery.count) + '\n' +
+        result = ("一等奖 " + str(lottery.first) + '\n' +
+                 "二等奖 " + str(lottery.second) + '\n' +
+                 "三等奖 " + str(lottery.third) + '\n' +
+                 "四等奖 " + str(lottery.forth) + '\n' +
+                 "五等奖 " + str(lottery.fifth) + '\n' +
+                 "六等奖 " + str(lottery.sixth) + '\n' + 
+                 "慈善 " + str(lottery.welfare) + '\n' +
+                 "购买总数 " + str(lottery.count) + '\n' +
                  "===========================" + '\n' +
-                 "get  " + str(lottery.first * 5000000 + lottery.second * 2500000 + lottery.third * 3000 + lottery.forth * 200 + lottery.fifth * 10 + lottery.sixth * 5) + "￥" + '\n' +
-                 "spend " + str(lottery.count * 2) )
+                 "一共赚了  " + str(lottery.first * 5000000 + lottery.second * 2500000 + lottery.third * 3000 + lottery.forth * 200 + lottery.fifth * 10 + lottery.sixth * 5) + "￥" + '\n' +
+                 "一共花了 " + str(lottery.count * 2) )
 
 
         self.oneTktScreen_instance = result
@@ -68,7 +65,7 @@ class TenTktScreen(Screen):
 
     def __init__(self, **kwargs):
         super(TenTktScreen, self).__init__(**kwargs)
-        self.tenTktScreen_instance = "haven't update yet"
+        self.tenTktScreen_instance = "暂无数据"
 
     def printResult(self):
 
@@ -79,16 +76,17 @@ class TenTktScreen(Screen):
         for tkt in tkts:
             lottery.win(lot,tkt)
 
-        result = ("first " + str(lottery.first) + '\n' +
-            "second " + str(lottery.second) + '\n' +
-            "third " + str(lottery.third) + '\n' +
-            "forth " + str(lottery.forth) + '\n' +
-            "sixth " + str(lottery.sixth) + '\n' + 
-            "welfare " + str(lottery.welfare) + '\n' +
-            "count " + str(lottery.count) + '\n' +
-            "===========================" + '\n' +
-            "get  " + str(lottery.first * 5000000 + lottery.second * 2500000 + lottery.third * 3000 + lottery.forth * 200 + lottery.fifth * 10 + lottery.sixth * 5) + "￥" + '\n' +
-            "spend " + str(lottery.count * 2) )
+        result = ("一等奖 " + str(lottery.first) + '\n' +
+                 "二等奖 " + str(lottery.second) + '\n' +
+                 "三等奖 " + str(lottery.third) + '\n' +
+                 "四等奖 " + str(lottery.forth) + '\n' +
+                 "五等奖 " + str(lottery.fifth) + '\n' +
+                 "六等奖 " + str(lottery.sixth) + '\n' + 
+                 "慈善 " + str(lottery.welfare) + '\n' +
+                 "购买总数 " + str(lottery.count) + '\n' +
+                 "===========================" + '\n' +
+                 "一共赚了  " + str(lottery.first * 5000000 + lottery.second * 2500000 + lottery.third * 3000 + lottery.forth * 200 + lottery.fifth * 10 + lottery.sixth * 5) + "￥" + '\n' +
+                 "一共花了 " + str(lottery.count * 2) )
 
         self.tenTktScreen_instance = result
 
