@@ -3,10 +3,10 @@
 
 # from kivy.config import Config
  
-# Config.set('kivy', 'default_font', [
-#     'msgothic',
-#     'fonts/txb2.ttf'])
 
+
+from kivy.core.text import LabelBase
+LabelBase.register('Roboto', './fonts/WeiRuanYaHei-1.ttf')
 
 from kivy.app import App
 from kivy.core.text import Label as CoreLabel
@@ -61,19 +61,6 @@ class OneTktScreen(Screen):
         self.oneTktScreen_instance = result
 
 
-        # print("second " + str(lottery.second))
-        # print("third " + str(lottery.third))
-        # print("forth " + str(lottery.forth))
-        # print("fifth " + str(lottery.fifth))
-        # print("sixth " + str(lottery.sixth))
-        # print("welfare " + str(lottery.welfare))
-        # print("count " + str(lottery.count))
-        # print("===========================")
-        # print("get  " + str(lottery.first * 5000000 + lottery.second * 2500000 + lottery.third * 3000 + lottery.forth * 200 + lottery.fifth * 10 + lottery.sixth * 5) + "￥")
-        # print("spend " + str(lottery.count * 2))
-        # for instance_class in self.ids.values():
-        #     instance_class.text = 'Exit'
-        #     instance_class.bind(on_release=exit)
 
 class TenTktScreen(Screen):
 
@@ -105,17 +92,6 @@ class TenTktScreen(Screen):
 
         self.tenTktScreen_instance = result
 
-        # print("first " + str(lottery.first))
-        # print("second " + str(lottery.second))
-        # print("third " + str(lottery.third))
-        # print("forth " + str(lottery.forth))
-        # print("fifth " + str(lottery.fifth))
-        # print("sixth " + str(lottery.sixth))
-        # print("welfare " + str(lottery.welfare))
-        # print("count " + str(lottery.count))
-        # print("===========================")
-        # print("get  " + str(lottery.first * 5000000 + lottery.second * 2500000 + lottery.third * 3000 + lottery.forth * 200 + lottery.fifth * 10 + lottery.sixth * 5) + "￥")
-        # print("spend " + str(lottery.count * 2))
 
 class MyApp(App):
 
