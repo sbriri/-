@@ -45,10 +45,11 @@ class lottery:
     fifth = 0
     sixth = 0
     welfare = 0
+    count = 0
     lucky = False
 
 
-    def match(self, pool, player, n) -> bool:
+    def match(pool, player, n) -> bool:
         global lucky
         lucky = False
         # check if lucky match
@@ -63,48 +64,41 @@ class lottery:
                 return True
 
 
-    def win(self, pool, player) -> None:
+    def win(pool, player) -> None:
         
-        global first
-        global second
-        global third
-        global forth
-        global fifth
-        global sixth
-        global welfare
-
-        if self.match(pool, player, 7):
-            self.first += 1
-            self.printStatus()
-        elif self.match(pool, player, 6):
+        lottery.count += 1
+        if lottery.match(pool, player, 7):
+            lottery.first += 1
+            lottery.printStatus()
+        elif lottery.match(pool, player, 6):
             if lucky is True:
-                self.third += 1
-                self.printStatus()
+                lottery.third += 1
+                lottery.printStatus()
             else:
-                self.second += 1
-                self.printStatus()
-        elif self.match(pool, player, 5):
-            self.forth += 1
-            self.printStatus()
-        elif self.match(pool, player, 4):
-            self.fifth += 1
-        elif self.match(pool, player, 3):
+                lottery.second += 1
+                lottery.printStatus()
+        elif lottery.match(pool, player, 5):
+            lottery.forth += 1
+            lottery.printStatus()
+        elif lottery.match(pool, player, 4):
+            lottery.fifth += 1
+        elif lottery.match(pool, player, 3):
             if lucky is True:
-                self.sixth += 1
+                lottery.sixth += 1
             else:
-                self.welfare += 1
-        elif self.match(pool, player, 2):
+                lottery.welfare += 1
+        elif lottery.match(pool, player, 2):
             if lucky is True:
-                self.sixth += 1
+                lottery.sixth += 1
             else:
-                self.welfare += 1
-        elif self.match(pool, player, 1):
+                lottery.welfare += 1
+        elif lottery.match(pool, player, 1):
             if lucky is True:
-                self.sixth += 1
+                lottery.sixth += 1
             else:
-                self.welfare += 1
+                lottery.welfare += 1
         else:
-            self.welfare += 1
+            lottery.welfare += 1
 
 
 class control:
@@ -133,5 +127,26 @@ class control:
 
         return tickets
 
+
+
+
+
 if __name__ == '__main__':
-    print(control.genN(10, False,0,False,[0]))
+    lot = control.gen1(False,0,False,[0])
+        
+    tkts = control.genN(10,False,0,False,[0])
+
+    for tkt in tkts:
+        lottery.win(lot,tkt)
+
+    print("first " + str(lottery.first))
+    print("second " + str(lottery.second))
+    print("third " + str(lottery.third))
+    print("forth " + str(lottery.forth))
+    print("fifth " + str(lottery.fifth))
+    print("sixth " + str(lottery.sixth))
+    print("welfare " + str(lottery.welfare))
+    print("count " + str(lottery.count))
+    print("===========================")
+    print("get  " + str(lottery.first * 5000000 + lottery.second * 2500000 + lottery.third * 3000 + lottery.forth * 200 + lottery.fifth * 10 + lottery.sixth * 5) + "￥")
+    print("spend " + str(lottery.count * 2))

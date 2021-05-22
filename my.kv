@@ -1,0 +1,59 @@
+#:kivy 2.0.0
+
+
+<ScreenManager>:
+    LotteryScreen:
+        name: "home"
+    OneTktScreen:
+        name: "oneticket"
+    TenTktScreen:
+        name: "10_tickets"
+
+
+<LotteryScreen>
+    cols:1
+    Screen:
+        GridLayout:
+            cols:1
+            size:root.width, root.height
+            Label:
+                text:"how do you want to buy ticket?"
+        
+            Button:
+                text:"get 1 ticket"
+                on_release: root.manager.current = "oneticket"
+
+            Button:
+                text:"get 10 tickets"
+                on_release: root.manager.current = "10_tickets"
+    
+
+<OneTktScreen>
+
+    Screen:
+        GridLayout:
+            cols:1
+            Label:
+                id:OneLabel
+                text:root.oneTktScreen_instance
+            Button:
+                text: "get 1 ticket"
+                on_release: root.printReslut()
+            Button:
+                text:"go back home"
+                on_release: root.manager.current = "home"
+
+
+<TenTktScreen>
+    Screen:
+        GridLayout:
+            cols:1
+            Label:
+                id:TenLabel
+                text:root.tenTktScreen_instance
+            Button:
+                text: "get 10 tickets"
+                on_release: root.printResult()
+            Button:
+                text: "go back home"
+                on_release: root.manager.current = "home"
